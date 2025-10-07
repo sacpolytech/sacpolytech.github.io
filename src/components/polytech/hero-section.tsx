@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MicrosoftLogos, MicrosoftLogoSVG } from '@/lib/microsoft-branding';
 
 export default function HeroSection() {
   return (
@@ -71,12 +73,25 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Microsoft logo */}
+        {/* Microsoft Partner Badge */}
         <div className="mt-20 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
           <p className="text-white/60 text-sm font-semibold uppercase tracking-wider mb-6">
             Certified Microsoft Partner
           </p>
-          <div className="text-white font-black text-4xl opacity-80">Microsoft</div>
+          <div className="flex items-center justify-center gap-8">
+            {/* Microsoft Logo */}
+            <div className="w-16 h-16">
+              <MicrosoftLogoSVG />
+            </div>
+            {/* Gold Partner Badge */}
+            <Image
+              src={MicrosoftLogos.goldPartner}
+              alt="Microsoft Gold Partner"
+              width={300}
+              height={120}
+              className="opacity-90 hover:opacity-100 transition-opacity"
+            />
+          </div>
         </div>
       </div>
     </section>

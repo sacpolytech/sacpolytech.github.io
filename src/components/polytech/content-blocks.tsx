@@ -3,29 +3,33 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { MicrosoftLogos, MicrosoftColors, MicrosoftProductScreenshots } from '@/lib/microsoft-branding';
 import { ArrowRight, CheckCircle, Cloud, ShieldCheck, BrainCircuit, Users, Code, LineChart } from 'lucide-react';
 
 const services = [
   {
     title: "Azure Cloud Solutions",
     description: "Seamless migration and optimization of your infrastructure to Microsoft Azure with enterprise-grade security and scalability.",
-    icon: Cloud,
+    logo: MicrosoftLogos.azure,
+    brandColor: MicrosoftColors.azure,
+    screenshot: MicrosoftProductScreenshots.azurePortal,
     features: ["Azure Migration & Strategy", "Cloud Architecture Design", "Infrastructure Optimization", "Azure DevOps Implementation"],
-    imageId: 'card-image-1'
   },
   {
     title: "Microsoft 365 Services",
     description: "Transform workplace productivity with comprehensive Microsoft 365 deployment, management, and optimization services.",
-    icon: ShieldCheck,
+    logo: MicrosoftLogos.microsoft365,
+    brandColor: MicrosoftColors.microsoft365,
+    screenshot: MicrosoftProductScreenshots.microsoft365Admin,
     features: ["Microsoft 365 Deployment", "Teams & SharePoint Solutions", "Security & Compliance", "User Adoption & Training"],
-    imageId: 'card-image-2'
   },
   {
     title: "Power Platform",
     description: "Accelerate digital transformation with custom solutions built on Power Apps, Power Automate, and Power BI.",
-    icon: BrainCircuit,
+    logo: MicrosoftLogos.powerPlatform,
+    brandColor: MicrosoftColors.powerPlatform,
+    screenshot: MicrosoftProductScreenshots.powerBIDashboard,
     features: ["Power Apps Development", "Process Automation", "Power BI Analytics", "Custom Solutions"],
-    imageId: 'card-image-3'
   },
 ];
 
@@ -100,7 +104,6 @@ export default function ContentBlocks() {
           {/* Services - Alternating Layout */}
           <div className="space-y-24">
             {services.map((service, index) => {
-              const Icon = service.icon;
               const isEven = index % 2 === 0;
 
               return (
@@ -111,28 +114,61 @@ export default function ContentBlocks() {
                   {/* Image/Visual Side */}
                   <div className={`relative ${isEven ? '' : 'lg:col-start-2'}`}>
                     <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900 shadow-2xl">
-                      {/* Decorative pattern */}
+                      {/* Product screenshot background */}
+                      <Image
+                        src={service.screenshot}
+                        alt={`${service.title} Dashboard`}
+                        fill
+                        className="object-cover opacity-30"
+                      />
+
+                      {/* Decorative pattern overlay */}
                       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:50px_50px]" />
 
-                      {/* Large icon */}
+                      {/* Product logo - centered */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-40 h-40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center backdrop-blur-sm">
-                          <Icon className="w-24 h-24 text-white" />
+                        <div
+                          className="w-48 h-48 rounded-full flex items-center justify-center backdrop-blur-sm border-4 border-white/10"
+                          style={{
+                            background: `linear-gradient(135deg, ${service.brandColor.primary}40, ${service.brandColor.secondary}40)`
+                          }}
+                        >
+                          <Image
+                            src={service.logo}
+                            alt={service.title}
+                            width={120}
+                            height={120}
+                            className="drop-shadow-2xl"
+                          />
                         </div>
                       </div>
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"
+                        style={{
+                          background: `linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent), radial-gradient(circle at 50% 50%, ${service.brandColor.primary}20, transparent 70%)`
+                        }}
+                      />
 
-                      {/* Floating badge */}
-                      <div className="absolute bottom-6 left-6 px-4 py-2 glass rounded-full text-white text-sm font-bold border border-white/20">
+                      {/* Floating badge with product color */}
+                      <div
+                        className="absolute bottom-6 left-6 px-4 py-2 glass rounded-full text-white text-sm font-bold border-2"
+                        style={{ borderColor: service.brandColor.primary }}
+                      >
                         Microsoft Certified
                       </div>
                     </div>
 
-                    {/* Decorative elements */}
-                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl -z-10" />
-                    <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl -z-10" />
+                    {/* Decorative elements with product colors */}
+                    <div
+                      className="absolute -top-4 -right-4 w-24 h-24 rounded-3xl -z-10 opacity-30"
+                      style={{ backgroundColor: service.brandColor.secondary }}
+                    />
+                    <div
+                      className="absolute -bottom-4 -left-4 w-32 h-32 rounded-3xl -z-10 opacity-30"
+                      style={{ backgroundColor: service.brandColor.primary }}
+                    />
                   </div>
 
                   {/* Content Side */}
@@ -152,14 +188,19 @@ export default function ContentBlocks() {
                       {service.description}
                     </p>
 
-                    {/* Features - Premium list */}
+                    {/* Features - Premium list with product colors */}
                     <div className="space-y-4 mb-8">
                       {service.features.map((feature, idx) => (
                         <div
                           key={feature}
                           className="flex items-start gap-4 group"
                         >
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                          <div
+                            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform"
+                            style={{
+                              background: `linear-gradient(135deg, ${service.brandColor.primary}, ${service.brandColor.secondary})`
+                            }}
+                          >
                             <CheckCircle className="w-6 h-6 text-white" />
                           </div>
                           <div>
@@ -171,10 +212,13 @@ export default function ContentBlocks() {
                       ))}
                     </div>
 
-                    {/* CTA */}
+                    {/* CTA with product color */}
                     <Button
                       size="lg"
-                      className="gradient-primary font-bold text-lg group"
+                      className="font-bold text-lg group text-white"
+                      style={{
+                        background: `linear-gradient(135deg, ${service.brandColor.primary}, ${service.brandColor.secondary})`
+                      }}
                       asChild
                     >
                       <Link href="#contact">

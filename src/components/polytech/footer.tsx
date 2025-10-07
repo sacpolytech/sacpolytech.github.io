@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Linkedin, Twitter, Facebook, Instagram, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { MicrosoftLogos, MicrosoftLogoSVG } from '@/lib/microsoft-branding';
 
 const PolyTechLogo = () => (
   <Link href="/" className="flex items-center gap-2">
@@ -102,6 +104,18 @@ export default function Footer() {
             <p className="text-slate-300 text-sm max-w-xs">
               Microsoft Gold Partner delivering enterprise solutions that transform businesses.
             </p>
+
+            {/* Microsoft Partner Badge */}
+            <div className="flex items-center gap-4 py-4">
+              <div className="w-12 h-12">
+                <MicrosoftLogoSVG />
+              </div>
+              <div className="text-left">
+                <p className="text-white text-xs font-bold">Microsoft</p>
+                <p className="text-slate-400 text-xs">Gold Partner</p>
+              </div>
+            </div>
+
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <Link key={social.name} href={social.href} className="text-slate-400 hover:text-white transition-colors">

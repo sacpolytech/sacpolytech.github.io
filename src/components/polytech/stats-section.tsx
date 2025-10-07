@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import { TrendingUp, Users, Award, Briefcase } from 'lucide-react';
+import { MicrosoftLogos } from '@/lib/microsoft-branding';
 
 const stats = [
   {
@@ -162,15 +164,34 @@ export default function StatsSection() {
           ))}
         </div>
 
-        {/* Client logos bar */}
+        {/* Microsoft Technologies Logos */}
         <div className="mt-20 pt-12 border-t border-white/10">
           <p className="text-white/50 text-sm font-semibold uppercase tracking-wider text-center mb-8">
             Powered by Microsoft Technologies
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            {['Azure', 'Microsoft 365', 'Power Platform', 'Dynamics 365', 'SharePoint'].map((tech) => (
-              <div key={tech} className="text-white font-bold text-xl hover:opacity-100 transition-opacity cursor-pointer">
-                {tech}
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {[
+              { name: 'Azure', logo: MicrosoftLogos.azure },
+              { name: 'Microsoft 365', logo: MicrosoftLogos.microsoft365 },
+              { name: 'Power Platform', logo: MicrosoftLogos.powerPlatform },
+              { name: 'Dynamics 365', logo: MicrosoftLogos.dynamics365 },
+              { name: 'SharePoint', logo: MicrosoftLogos.sharepoint },
+            ].map((tech) => (
+              <div
+                key={tech.name}
+                className="group flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-all duration-300 cursor-pointer"
+              >
+                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                  <Image
+                    src={tech.logo}
+                    alt={tech.name}
+                    fill
+                    className="object-contain group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <span className="text-white/80 text-xs font-semibold text-center">
+                  {tech.name}
+                </span>
               </div>
             ))}
           </div>
