@@ -44,15 +44,15 @@ export default function Footer() {
       { name: 'Blog', href: '#' },
     ],
     Services: [
-      { name: 'Cloud Solutions', href: '#services' },
-      { name: 'Cyber Security', href: '#services' },
-      { name: 'Data & AI', href: '#services' },
-      { name: 'App Modernization', href: '#services' },
+      { name: 'Azure Cloud Solutions', href: '#services' },
+      { name: 'Microsoft 365 Services', href: '#services' },
+      { name: 'Power Platform', href: '#services' },
+      { name: 'Dynamics 365', href: '#services' },
     ],
     Connect: [
       { name: 'Contact Us', href: '#contact' },
       { name: 'Support', href: '#' },
-      { name: 'Partners', href: '#' },
+      { name: 'Testimonials', href: '#testimonials' },
     ],
   };
 
@@ -63,10 +63,10 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              Stay Ahead of the Curve
+              Stay Updated on Microsoft Solutions
             </h3>
             <p className="text-primary-foreground/90 mb-6 text-lg">
-              Subscribe to our newsletter for the latest insights, tech trends, and exclusive content.
+              Subscribe to our newsletter for the latest Microsoft insights, enterprise strategies, and exclusive content.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
@@ -100,7 +100,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">PolyTech</span>
             </div>
             <p className="text-slate-300 text-sm max-w-xs">
-              Pioneering digital solutions to build the future of business.
+              Microsoft Gold Partner delivering enterprise solutions that transform businesses.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (

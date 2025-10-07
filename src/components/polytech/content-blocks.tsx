@@ -77,55 +77,112 @@ export default function ContentBlocks() {
         </div>
       </section>
 
-      <section id="services" className="py-24 md:py-32 bg-background relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(59,130,246,0.05),transparent_60%)]" />
+      <section id="services" className="py-24 md:py-32 relative overflow-hidden bg-white">
+        {/* Background elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-slate-50 to-transparent" />
 
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
-              Our <span className="gradient-text">Expertise</span>
+          {/* Section Header */}
+          <div className="max-w-3xl mb-24">
+            <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold mb-6 border border-primary/20">
+              MICROSOFT SERVICES
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+              Expert Solutions,
+              <br />
+              <span className="gradient-text">Exceptional Results</span>
             </h2>
-            <p className="max-w-3xl mx-auto text-foreground/70 text-xl md:text-2xl font-semibold">
-              Microsoft partnership services tailored to your business needs
+            <p className="text-xl md:text-2xl text-foreground/70 font-medium">
+              Comprehensive Microsoft partnership services designed to accelerate your digital transformation
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Services - Alternating Layout */}
+          <div className="space-y-24">
             {services.map((service, index) => {
               const Icon = service.icon;
+              const isEven = index % 2 === 0;
+
               return (
                 <div
                   key={service.title}
-                  className="group relative p-8 rounded-3xl bg-white border-2 border-slate-200 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                  className={`grid lg:grid-cols-2 gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
                 >
-                  {/* Icon */}
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 glow group-hover:scale-110 transition-transform">
-                    <Icon className="w-10 h-10 text-white" />
+                  {/* Image/Visual Side */}
+                  <div className={`relative ${isEven ? '' : 'lg:col-start-2'}`}>
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900 shadow-2xl">
+                      {/* Decorative pattern */}
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+                      {/* Large icon */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-40 h-40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center backdrop-blur-sm">
+                          <Icon className="w-24 h-24 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+
+                      {/* Floating badge */}
+                      <div className="absolute bottom-6 left-6 px-4 py-2 glass rounded-full text-white text-sm font-bold border border-white/20">
+                        Microsoft Certified
+                      </div>
+                    </div>
+
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl -z-10" />
+                    <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl -z-10" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-3xl font-black mb-4 text-foreground">{service.title}</h3>
+                  {/* Content Side */}
+                  <div className={`${isEven ? '' : 'lg:col-start-1 lg:row-start-1'}`}>
+                    {/* Service number */}
+                    <div className="text-8xl font-black text-slate-100 mb-4">
+                      0{index + 1}
+                    </div>
 
-                  {/* Description */}
-                  <p className="text-foreground/70 mb-6 text-lg font-medium">{service.description}</p>
+                    {/* Title */}
+                    <h3 className="text-4xl md:text-5xl font-black mb-6 text-foreground">
+                      {service.title}
+                    </h3>
 
-                  {/* Features */}
-                  <ul className="space-y-3">
-                    {service.features.map(feature => (
-                      <li key={feature} className="flex items-start">
-                        <CheckCircle className="w-6 h-6 text-primary mr-3 shrink-0 mt-0.5"/>
-                        <span className="text-foreground/80 font-medium">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Description */}
+                    <p className="text-xl text-foreground/70 mb-8 font-medium leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  {/* Decorative corner */}
-                  <div className="absolute top-6 right-6 w-4 h-4 bg-gradient-to-br from-primary to-accent rounded-full animate-pulse-slow" />
+                    {/* Features - Premium list */}
+                    <div className="space-y-4 mb-8">
+                      {service.features.map((feature, idx) => (
+                        <div
+                          key={feature}
+                          className="flex items-start gap-4 group"
+                        >
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                            <CheckCircle className="w-6 h-6 text-white" />
+                          </div>
+                          <div>
+                            <span className="text-lg font-bold text-foreground block">
+                              {feature}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
 
-                  {/* Bottom gradient bar */}
-                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-purple-500 to-accent rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {/* CTA */}
+                    <Button
+                      size="lg"
+                      className="gradient-primary font-bold text-lg group"
+                      asChild
+                    >
+                      <Link href="#contact">
+                        Learn More
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               );
             })}
