@@ -77,45 +77,55 @@ export default function ContentBlocks() {
         </div>
       </section>
 
-      <section id="services" className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Comprehensive Solutions for the Digital Age</h2>
-            <p className="max-w-3xl mx-auto text-muted-foreground text-lg">
-              We provide the strategic guidance and technical expertise to solve your most complex challenges and unlock new growth.
+      <section id="services" className="py-24 md:py-32 bg-background relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white dark:from-slate-900 dark:to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(120,119,198,0.1),transparent_60%)]" />
+
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
+              <span className="gradient-text">Supercharge</span> Your Growth
+            </h2>
+            <p className="max-w-3xl mx-auto text-foreground/70 text-xl md:text-2xl font-semibold">
+              Enterprise-grade solutions that drive real results
             </p>
           </div>
-          <div className="space-y-20">
+
+          <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
-              const serviceImage = PlaceHolderImages.find(p => p.id === service.imageId);
               return (
-                <div key={service.title} className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                  <div className={`relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg ${index % 2 === 0 ? 'md:order-last' : ''}`}>
-                    {serviceImage && (
-                      <Image
-                        src={serviceImage.imageUrl}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                        data-ai-hint={serviceImage.imageHint}
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent" />
+                <div
+                  key={service.title}
+                  className="group relative p-8 rounded-3xl bg-white border-2 border-purple-100 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                >
+                  {/* Icon */}
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 glow group-hover:scale-110 transition-transform">
+                    <Icon className="w-10 h-10 text-white" />
                   </div>
-                  <div className={`${index % 2 === 0 ? 'md:order-first' : ''}`}>
-                    <Icon className="w-12 h-12 text-primary mb-4" />
-                    <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground mb-6">{service.description}</p>
-                    <ul className="space-y-3 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-                      {service.features.map(feature => (
-                        <li key={feature} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-accent mr-2 shrink-0"/>
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-3xl font-black mb-4 text-foreground">{service.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-foreground/70 mb-6 text-lg font-medium">{service.description}</p>
+
+                  {/* Features */}
+                  <ul className="space-y-3">
+                    {service.features.map(feature => (
+                      <li key={feature} className="flex items-start">
+                        <CheckCircle className="w-6 h-6 text-primary mr-3 shrink-0 mt-0.5"/>
+                        <span className="text-foreground/80 font-medium">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Decorative corner */}
+                  <div className="absolute top-6 right-6 w-4 h-4 bg-gradient-to-br from-primary to-accent rounded-full animate-pulse-slow" />
+
+                  {/* Bottom gradient bar */}
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-purple-500 to-accent rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               );
             })}

@@ -32,22 +32,22 @@ const testimonials = [
 
 
 const TestimonialCard = ({ name, title, image, quote }: (typeof testimonials)[0]) => (
-  <Card className="h-full border-0 shadow-none bg-transparent">
-    <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full">
-      <div className="flex mb-2">
+  <Card className="h-full border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-300 bg-card/80 backdrop-blur-sm hover:border-primary/30">
+    <CardContent className="p-8 md:p-10 flex flex-col items-center text-center h-full">
+      <div className="flex mb-4">
         {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-accent fill-accent" />)}
       </div>
-      <blockquote className="text-lg md:text-xl text-foreground font-medium mt-4 mb-6 flex-grow">
-        “{quote}”
+      <blockquote className="text-lg md:text-xl text-foreground font-medium mt-4 mb-8 flex-grow leading-relaxed">
+        "{quote}"
       </blockquote>
-      <div className="flex items-center">
-        <Avatar className="h-12 w-12 mr-4">
+      <div className="flex flex-col items-center pt-6 border-t border-border/50 w-full">
+        <Avatar className="h-16 w-16 mb-4 ring-4 ring-primary/10">
           <AvatarImage src={image} alt={name} />
-          <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+          <AvatarFallback className="bg-primary text-primary-foreground text-lg font-semibold">{name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>
-          <p className="font-semibold text-foreground">{name}</p>
-          <p className="text-sm text-muted-foreground">{title}</p>
+          <p className="font-bold text-foreground text-lg">{name}</p>
+          <p className="text-sm text-muted-foreground mt-1">{title}</p>
         </div>
       </div>
     </CardContent>
