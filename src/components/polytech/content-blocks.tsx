@@ -7,24 +7,24 @@ import { ArrowRight, CheckCircle, Cloud, ShieldCheck, BrainCircuit, Users, Code,
 
 const services = [
   {
-    title: "Cloud Transformation",
-    description: "Leverage the full power of the cloud with our end-to-end services, from strategy and migration to management and optimization.",
+    title: "Azure Cloud Solutions",
+    description: "Seamless migration and optimization of your infrastructure to Microsoft Azure with enterprise-grade security and scalability.",
     icon: Cloud,
-    features: ["Infrastructure as a Service (IaaS)", "Platform as a Service (PaaS)", "Multi-Cloud & Hybrid Solutions", "Cloud-Native Development"],
+    features: ["Azure Migration & Strategy", "Cloud Architecture Design", "Infrastructure Optimization", "Azure DevOps Implementation"],
     imageId: 'card-image-1'
   },
   {
-    title: "Intelligent Security",
-    description: "Proactively protect your organization with our 360-degree cybersecurity services, powered by AI and threat intelligence.",
+    title: "Microsoft 365 Services",
+    description: "Transform workplace productivity with comprehensive Microsoft 365 deployment, management, and optimization services.",
     icon: ShieldCheck,
-    features: ["Managed Detection & Response", "Zero Trust Architecture", "Security Audits & Compliance", "Incident Response"],
+    features: ["Microsoft 365 Deployment", "Teams & SharePoint Solutions", "Security & Compliance", "User Adoption & Training"],
     imageId: 'card-image-2'
   },
   {
-    title: "Data & AI Innovation",
-    description: "Turn your data into a strategic asset. We help you build intelligent systems that drive efficiency and create new opportunities.",
+    title: "Power Platform",
+    description: "Accelerate digital transformation with custom solutions built on Power Apps, Power Automate, and Power BI.",
     icon: BrainCircuit,
-    features: ["Modern Data Platforms", "Machine Learning & AI Models", "Business Intelligence Dashboards", "Data Governance & Quality"],
+    features: ["Power Apps Development", "Process Automation", "Power BI Analytics", "Custom Solutions"],
     imageId: 'card-image-3'
   },
 ];
@@ -79,16 +79,16 @@ export default function ContentBlocks() {
 
       <section id="services" className="py-24 md:py-32 bg-background relative overflow-hidden">
         {/* Background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white dark:from-slate-900 dark:to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(120,119,198,0.1),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(59,130,246,0.05),transparent_60%)]" />
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
-              <span className="gradient-text">Supercharge</span> Your Growth
+              Our <span className="gradient-text">Expertise</span>
             </h2>
             <p className="max-w-3xl mx-auto text-foreground/70 text-xl md:text-2xl font-semibold">
-              Enterprise-grade solutions that drive real results
+              Microsoft partnership services tailored to your business needs
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export default function ContentBlocks() {
               return (
                 <div
                   key={service.title}
-                  className="group relative p-8 rounded-3xl bg-white border-2 border-purple-100 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                  className="group relative p-8 rounded-3xl bg-white border-2 border-slate-200 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
                 >
                   {/* Icon */}
                   <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 glow group-hover:scale-110 transition-transform">

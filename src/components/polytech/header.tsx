@@ -28,11 +28,11 @@ export default function Header() {
         <Button
           size="lg"
           asChild
-          className="gradient-primary font-bold text-lg px-8 py-6 rounded-full glow-accent hover:scale-105 transition-transform shadow-2xl"
+          className="gradient-primary font-bold text-lg px-8 py-6 rounded-full hover:scale-105 transition-transform shadow-xl"
         >
           <Link href="#contact">
             <Rocket className="w-5 h-5 mr-2" />
-            Get Started Free
+            Contact Us
           </Link>
         </Button>
       </div>
