@@ -9,10 +9,18 @@ This is a Next.js 15 application for the Sacramento Polytechnic website with Typ
 ## Development Commands
 
 - `npm run dev` - Start development server with Turbopack on port 9002
-- `npm run build` - Production build
+- `npm run build` - Production build (outputs to `./out` directory for static export)
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 - `npm run typecheck` - Run TypeScript type checking
+
+## Deployment
+
+The site automatically deploys to GitHub Pages at https://sacpolytech.github.io/ when changes are pushed to the `main` branch.
+
+- **Deployment Workflow**: `.github/workflows/deploy.yml`
+- **Build Output**: Static export to `./out` directory
+- **Configuration**: Next.js configured with `output: 'export'` for static site generation
 
 ## AI Development Commands
 
